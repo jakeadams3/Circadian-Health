@@ -1,0 +1,485 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5757C8CF2B325FD500D6C4FB /* DayIntervalPieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5757C8CE2B325FD500D6C4FB /* DayIntervalPieChartView.swift */; };
+		57A992552A0C7F1E009A5546 /* Circadian_HealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A992542A0C7F1E009A5546 /* Circadian_HealthApp.swift */; };
+		57A992572A0C7F1E009A5546 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A992562A0C7F1E009A5546 /* ContentView.swift */; };
+		57A992592A0C7F1F009A5546 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57A992582A0C7F1F009A5546 /* Assets.xcassets */; };
+		57A9925D2A0C7F1F009A5546 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57A9925C2A0C7F1F009A5546 /* Preview Assets.xcassets */; };
+		57CA2DAE2B255EB70087CFBC /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA2DAD2B255EB70087CFBC /* DateUtils.swift */; };
+		57CA2DB02B2560D90087CFBC /* CircadianInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA2DAF2B2560D90087CFBC /* CircadianInfoView.swift */; };
+		57CA2DB22B2563D70087CFBC /* MainInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA2DB12B2563D60087CFBC /* MainInterfaceView.swift */; };
+		57CA2DB42B2566F40087CFBC /* MainInterfaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA2DB32B2566F40087CFBC /* MainInterfaceViewModel.swift */; };
+		57CA2DB62B2574D50087CFBC /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA2DB52B2574D50087CFBC /* WelcomeView.swift */; };
+		57CA2DB82B25773D0087CFBC /* ShiftCircadianRhythmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA2DB72B25773D0087CFBC /* ShiftCircadianRhythmView.swift */; };
+		57CA2DBA2B25780F0087CFBC /* LogWakeupTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA2DB92B25780F0087CFBC /* LogWakeupTimeView.swift */; };
+		57CA2DBC2B27D3B00087CFBC /* DayChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA2DBB2B27D3B00087CFBC /* DayChartView.swift */; };
+		57CA2DBE2B27D4170087CFBC /* TimePeriodArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA2DBD2B27D4170087CFBC /* TimePeriodArcView.swift */; };
+		57CA2DC62B27DAB10087CFBC /* WakeupTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA2DC52B27DAB10087CFBC /* WakeupTimeView.swift */; };
+		57CA2DC82B2929390087CFBC /* SleepGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA2DC72B2929390087CFBC /* SleepGoalView.swift */; };
+		57E4CB422B37E549000BB70C /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4CB412B37E549000BB70C /* MainTabView.swift */; };
+		57E4CB442B37F3C3000BB70C /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4CB432B37F3C3000BB70C /* TemperatureView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5757C8CE2B325FD500D6C4FB /* DayIntervalPieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayIntervalPieChartView.swift; sourceTree = "<group>"; };
+		57A992512A0C7F1E009A5546 /* Circadian Health.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Circadian Health.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		57A992542A0C7F1E009A5546 /* Circadian_HealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circadian_HealthApp.swift; sourceTree = "<group>"; };
+		57A992562A0C7F1E009A5546 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		57A992582A0C7F1F009A5546 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		57A9925A2A0C7F1F009A5546 /* Circadian_Health.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Circadian_Health.entitlements; sourceTree = "<group>"; };
+		57A9925C2A0C7F1F009A5546 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		57CA2DAD2B255EB70087CFBC /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		57CA2DAF2B2560D90087CFBC /* CircadianInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircadianInfoView.swift; sourceTree = "<group>"; };
+		57CA2DB12B2563D60087CFBC /* MainInterfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInterfaceView.swift; sourceTree = "<group>"; };
+		57CA2DB32B2566F40087CFBC /* MainInterfaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInterfaceViewModel.swift; sourceTree = "<group>"; };
+		57CA2DB52B2574D50087CFBC /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		57CA2DB72B25773D0087CFBC /* ShiftCircadianRhythmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCircadianRhythmView.swift; sourceTree = "<group>"; };
+		57CA2DB92B25780F0087CFBC /* LogWakeupTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWakeupTimeView.swift; sourceTree = "<group>"; };
+		57CA2DBB2B27D3B00087CFBC /* DayChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayChartView.swift; sourceTree = "<group>"; };
+		57CA2DBD2B27D4170087CFBC /* TimePeriodArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodArcView.swift; sourceTree = "<group>"; };
+		57CA2DC52B27DAB10087CFBC /* WakeupTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeupTimeView.swift; sourceTree = "<group>"; };
+		57CA2DC72B2929390087CFBC /* SleepGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepGoalView.swift; sourceTree = "<group>"; };
+		57E4CB412B37E549000BB70C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		57E4CB432B37F3C3000BB70C /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		57A9924E2A0C7F1E009A5546 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		57A992482A0C7F1E009A5546 = {
+			isa = PBXGroup;
+			children = (
+				57A992532A0C7F1E009A5546 /* Circadian Health */,
+				57A992522A0C7F1E009A5546 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		57A992522A0C7F1E009A5546 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				57A992512A0C7F1E009A5546 /* Circadian Health.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		57A992532A0C7F1E009A5546 /* Circadian Health */ = {
+			isa = PBXGroup;
+			children = (
+				57CA2DC42B27D65B0087CFBC /* Root */,
+				57E4CB402B37E4D1000BB70C /* MainTabView */,
+				57CA2DC32B27D6390087CFBC /* Utils */,
+				57CA2DC22B27D61E0087CFBC /* MainInterface */,
+				57CA2DBF2B27D4A60087CFBC /* WelcomeFlow */,
+				57CA2DC12B27D5890087CFBC /* ButtonScreens */,
+				57CA2DC02B27D50B0087CFBC /* Graph */,
+				57A992582A0C7F1F009A5546 /* Assets.xcassets */,
+				57A9925A2A0C7F1F009A5546 /* Circadian_Health.entitlements */,
+				57A9925B2A0C7F1F009A5546 /* Preview Content */,
+			);
+			path = "Circadian Health";
+			sourceTree = "<group>";
+		};
+		57A9925B2A0C7F1F009A5546 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				57A9925C2A0C7F1F009A5546 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		57CA2DBF2B27D4A60087CFBC /* WelcomeFlow */ = {
+			isa = PBXGroup;
+			children = (
+				57CA2DB52B2574D50087CFBC /* WelcomeView.swift */,
+			);
+			path = WelcomeFlow;
+			sourceTree = "<group>";
+		};
+		57CA2DC02B27D50B0087CFBC /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				57CA2DBB2B27D3B00087CFBC /* DayChartView.swift */,
+				57CA2DBD2B27D4170087CFBC /* TimePeriodArcView.swift */,
+				5757C8CE2B325FD500D6C4FB /* DayIntervalPieChartView.swift */,
+			);
+			path = Graph;
+			sourceTree = "<group>";
+		};
+		57CA2DC12B27D5890087CFBC /* ButtonScreens */ = {
+			isa = PBXGroup;
+			children = (
+				57CA2DAF2B2560D90087CFBC /* CircadianInfoView.swift */,
+				57CA2DB72B25773D0087CFBC /* ShiftCircadianRhythmView.swift */,
+				57CA2DB92B25780F0087CFBC /* LogWakeupTimeView.swift */,
+				57E4CB432B37F3C3000BB70C /* TemperatureView.swift */,
+			);
+			path = ButtonScreens;
+			sourceTree = "<group>";
+		};
+		57CA2DC22B27D61E0087CFBC /* MainInterface */ = {
+			isa = PBXGroup;
+			children = (
+				57CA2DC52B27DAB10087CFBC /* WakeupTimeView.swift */,
+				57CA2DC72B2929390087CFBC /* SleepGoalView.swift */,
+				57CA2DB12B2563D60087CFBC /* MainInterfaceView.swift */,
+				57CA2DB32B2566F40087CFBC /* MainInterfaceViewModel.swift */,
+			);
+			path = MainInterface;
+			sourceTree = "<group>";
+		};
+		57CA2DC32B27D6390087CFBC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				57CA2DAD2B255EB70087CFBC /* DateUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		57CA2DC42B27D65B0087CFBC /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				57A992542A0C7F1E009A5546 /* Circadian_HealthApp.swift */,
+				57A992562A0C7F1E009A5546 /* ContentView.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		57E4CB402B37E4D1000BB70C /* MainTabView */ = {
+			isa = PBXGroup;
+			children = (
+				57E4CB412B37E549000BB70C /* MainTabView.swift */,
+			);
+			path = MainTabView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		57A992502A0C7F1E009A5546 /* Circadian Health */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 57A992602A0C7F1F009A5546 /* Build configuration list for PBXNativeTarget "Circadian Health" */;
+			buildPhases = (
+				57A9924D2A0C7F1E009A5546 /* Sources */,
+				57A9924E2A0C7F1E009A5546 /* Frameworks */,
+				57A9924F2A0C7F1E009A5546 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Circadian Health";
+			packageProductDependencies = (
+			);
+			productName = "Circadian Health";
+			productReference = 57A992512A0C7F1E009A5546 /* Circadian Health.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		57A992492A0C7F1E009A5546 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					57A992502A0C7F1E009A5546 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+				};
+			};
+			buildConfigurationList = 57A9924C2A0C7F1E009A5546 /* Build configuration list for PBXProject "Circadian Health" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 57A992482A0C7F1E009A5546;
+			packageReferences = (
+			);
+			productRefGroup = 57A992522A0C7F1E009A5546 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				57A992502A0C7F1E009A5546 /* Circadian Health */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		57A9924F2A0C7F1E009A5546 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57A9925D2A0C7F1F009A5546 /* Preview Assets.xcassets in Resources */,
+				57A992592A0C7F1F009A5546 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		57A9924D2A0C7F1E009A5546 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57CA2DBC2B27D3B00087CFBC /* DayChartView.swift in Sources */,
+				5757C8CF2B325FD500D6C4FB /* DayIntervalPieChartView.swift in Sources */,
+				57A992572A0C7F1E009A5546 /* ContentView.swift in Sources */,
+				57CA2DBE2B27D4170087CFBC /* TimePeriodArcView.swift in Sources */,
+				57CA2DB22B2563D70087CFBC /* MainInterfaceView.swift in Sources */,
+				57CA2DAE2B255EB70087CFBC /* DateUtils.swift in Sources */,
+				57A992552A0C7F1E009A5546 /* Circadian_HealthApp.swift in Sources */,
+				57CA2DC62B27DAB10087CFBC /* WakeupTimeView.swift in Sources */,
+				57CA2DB82B25773D0087CFBC /* ShiftCircadianRhythmView.swift in Sources */,
+				57E4CB442B37F3C3000BB70C /* TemperatureView.swift in Sources */,
+				57CA2DB02B2560D90087CFBC /* CircadianInfoView.swift in Sources */,
+				57CA2DB42B2566F40087CFBC /* MainInterfaceViewModel.swift in Sources */,
+				57CA2DB62B2574D50087CFBC /* WelcomeView.swift in Sources */,
+				57CA2DC82B2929390087CFBC /* SleepGoalView.swift in Sources */,
+				57CA2DBA2B25780F0087CFBC /* LogWakeupTimeView.swift in Sources */,
+				57E4CB422B37E549000BB70C /* MainTabView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		57A9925E2A0C7F1F009A5546 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		57A9925F2A0C7F1F009A5546 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		57A992612A0C7F1F009A5546 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Circadian Health/Circadian_Health.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_ASSET_PATHS = "\"Circadian Health/Preview Content\"";
+				DEVELOPMENT_TEAM = 777D6AV5JC;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Circadian;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jakeadams.Circadian-Health-Helper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		57A992622A0C7F1F009A5546 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Circadian Health/Circadian_Health.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_ASSET_PATHS = "\"Circadian Health/Preview Content\"";
+				DEVELOPMENT_TEAM = 777D6AV5JC;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Circadian;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jakeadams.Circadian-Health-Helper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		57A9924C2A0C7F1E009A5546 /* Build configuration list for PBXProject "Circadian Health" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57A9925E2A0C7F1F009A5546 /* Debug */,
+				57A9925F2A0C7F1F009A5546 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		57A992602A0C7F1F009A5546 /* Build configuration list for PBXNativeTarget "Circadian Health" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57A992612A0C7F1F009A5546 /* Debug */,
+				57A992622A0C7F1F009A5546 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 57A992492A0C7F1E009A5546 /* Project object */;
+}
