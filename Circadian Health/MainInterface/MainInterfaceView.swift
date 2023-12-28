@@ -36,7 +36,6 @@ struct MainInterfaceView: View {
                     }
                 }
             }
-            .navigationTitle("Circadian Tracker") // Example title
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarColor(backgroundColor: .black, titleColor: .white) // Custom Modifier to change Navigation Bar color
             .onAppear {
@@ -72,7 +71,7 @@ struct ResultsView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
-            Spacer().frame(height: 20)
+            Spacer().frame(height: 60)
             
             DayIntervalPieChartView(sleepStart: viewModel.sleepStart, sleepEnd: viewModel.sleepEnd, temperatureMinimum: viewModel.temperatureMinimum, temperatureMaximum: viewModel.temperatureMaximum, getLightStart: viewModel.getLightStart, getLightEnd: viewModel.getLightEnd, deadzoneStart: viewModel.deadzoneStart, avoidLightStart: viewModel.avoidLightStart, avoidLightEnd: viewModel.avoidLightEnd, viewModel: viewModel)
                 .padding(.top, 10)
