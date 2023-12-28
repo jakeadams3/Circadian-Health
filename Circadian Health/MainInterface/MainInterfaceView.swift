@@ -71,7 +71,7 @@ struct ResultsView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
-            Spacer().frame(height: 60)
+            Spacer().frame(height: 60) // updated line
             
             DayIntervalPieChartView(sleepStart: viewModel.sleepStart, sleepEnd: viewModel.sleepEnd, temperatureMinimum: viewModel.temperatureMinimum, temperatureMaximum: viewModel.temperatureMaximum, getLightStart: viewModel.getLightStart, getLightEnd: viewModel.getLightEnd, deadzoneStart: viewModel.deadzoneStart, avoidLightStart: viewModel.avoidLightStart, avoidLightEnd: viewModel.avoidLightEnd, viewModel: viewModel)
                 .padding(.top, 10)
