@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57078B522B3E48A300D9F011 /* ProgressRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57078B512B3E48A300D9F011 /* ProgressRingView.swift */; };
 		5757C8CF2B325FD500D6C4FB /* DayIntervalPieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5757C8CE2B325FD500D6C4FB /* DayIntervalPieChartView.swift */; };
 		57A992552A0C7F1E009A5546 /* Circadian_HealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A992542A0C7F1E009A5546 /* Circadian_HealthApp.swift */; };
 		57A992572A0C7F1E009A5546 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A992562A0C7F1E009A5546 /* ContentView.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		57078B512B3E48A300D9F011 /* ProgressRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRingView.swift; sourceTree = "<group>"; };
 		5757C8CE2B325FD500D6C4FB /* DayIntervalPieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayIntervalPieChartView.swift; sourceTree = "<group>"; };
 		57A992512A0C7F1E009A5546 /* Circadian Health.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Circadian Health.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A992542A0C7F1E009A5546 /* Circadian_HealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circadian_HealthApp.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				57CA2DBB2B27D3B00087CFBC /* DayChartView.swift */,
 				57CA2DBD2B27D4170087CFBC /* TimePeriodArcView.swift */,
 				5757C8CE2B325FD500D6C4FB /* DayIntervalPieChartView.swift */,
+				57078B512B3E48A300D9F011 /* ProgressRingView.swift */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				57CA2DAE2B255EB70087CFBC /* DateUtils.swift in Sources */,
 				57A992552A0C7F1E009A5546 /* Circadian_HealthApp.swift in Sources */,
 				57CA2DC62B27DAB10087CFBC /* WakeupTimeView.swift in Sources */,
+				57078B522B3E48A300D9F011 /* ProgressRingView.swift in Sources */,
 				57CA2DB82B25773D0087CFBC /* ShiftCircadianRhythmView.swift in Sources */,
 				57E4CB442B37F3C3000BB70C /* TemperatureView.swift in Sources */,
 				57CA2DB02B2560D90087CFBC /* CircadianInfoView.swift in Sources */,

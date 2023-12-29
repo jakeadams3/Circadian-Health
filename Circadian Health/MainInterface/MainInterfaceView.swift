@@ -71,13 +71,12 @@ struct ResultsView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
-            Spacer().frame(height: 60) // ok last update for now
+            Spacer().frame(height: 20) // ok last update for now
             
             DayIntervalPieChartView(sleepStart: viewModel.sleepStart, sleepEnd: viewModel.sleepEnd, temperatureMinimum: viewModel.temperatureMinimum, temperatureMaximum: viewModel.temperatureMaximum, getLightStart: viewModel.getLightStart, getLightEnd: viewModel.getLightEnd, deadzoneStart: viewModel.deadzoneStart, avoidLightStart: viewModel.avoidLightStart, avoidLightEnd: viewModel.avoidLightEnd, viewModel: viewModel)
-                .padding(.top, 10)
             
             UpdateDataButton(viewModel: viewModel, currentIndex: $currentIndex, showResults: $showResults)
-                .padding(.bottom, 20)
+                .padding(.bottom)
         }
     }
 }

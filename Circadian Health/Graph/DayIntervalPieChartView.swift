@@ -87,8 +87,7 @@ struct DayIntervalPieChartView: View {
                         Chart(dayIntervals, id: \.name) { interval in
                             SectorMark(
                                 angle: .value("Value", interval.value),
-                                innerRadius: .ratio(0.618),
-                                angularInset: 1.5
+                                innerRadius: .ratio(0.618)
                             )
                             .cornerRadius(5.0)
                             .foregroundStyle(colorForInterval(interval.name))
@@ -98,6 +97,8 @@ struct DayIntervalPieChartView: View {
                         ForEach(0..<dayIntervals.count, id: \.self) { index in
                             TickMark(angle: self.startAngle(of: index))
                         }
+                        
+                        ProgressRingView(getLightStart: getLightStart)
                     }
                     .frame(width: geometry.size.width * 0.62, height: geometry.size.height * 0.62) // Scale down the graph and tick marks by 0.75
 
@@ -111,11 +112,12 @@ struct DayIntervalPieChartView: View {
                 }
                 .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
             }
+            .padding(.horizontal)
+            .padding(.bottom, 13)
 
-            Spacer(minLength: 40)
 
             // Custom Legends
-            VStack(alignment: .leading) {
+            VStack(alignment: .center) {
                 ForEach(dayIntervals, id: \.name) { interval in
                     HStack {
                         ColorSwatch(color: colorForInterval(interval.name))
@@ -123,9 +125,8 @@ struct DayIntervalPieChartView: View {
                             .foregroundColor(.white) // Set the text color to white
                     }
                 }
-                
             }
-            Spacer(minLength: 10) //test
+            Spacer(minLength: 30)
         }
     }
 }
@@ -161,8 +162,8 @@ struct TickMark: View {
                 let radius = min(geometry.size.width, geometry.size.height) / 2
                 let tickStart = CGPoint(x: center.x + Darwin.cos(angle.radians) * radius,
                                         y: center.y + Darwin.sin(angle.radians) * radius)
-                let tickEnd = CGPoint(x: center.x + Darwin.cos(angle.radians) * (radius - 10),
-                                      y: center.y + Darwin.sin(angle.radians) * (radius - 10))
+                let tickEnd = CGPoint(x: center.x + Darwin.cos(angle.radians) * (radius - 19),
+                                      y: center.y + Darwin.sin(angle.radians) * (radius - 19))
                 path.move(to: tickStart)
                 path.addLine(to: tickEnd)
             }
