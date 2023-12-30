@@ -29,7 +29,7 @@ class MainInterfaceViewModel: ObservableObject {
             // Add any additional actions you want to perform when currentIndex changes
         }
     }
-    @Published var showResults = UserDefaults.standard.object(forKey: "wakingTimes") != nil
+    @Published var showResults: Bool
     @Published var navigationTag: Int? = nil // Declare navigationTag here
     @Published var logWakeUpScreen: Bool = false
     @Published var showDetails = false
@@ -61,14 +61,21 @@ class MainInterfaceViewModel: ObservableObject {
             }
         }
         
+        // Check if wakingTimes has valid data
         if let data = UserDefaults.standard.data(forKey: "wakingTimes"),
-                   let savedWakingTime = try? JSONDecoder().decode(Date.self, from: data) {
-                    wakingTimes = savedWakingTime
-                } else {
-                    // Set default date value to 8 AM if no saved value
-                    let calendar = Calendar.current
-                    wakingTimes = calendar.date(bySettingHour: 8, minute: 0, second: 0, of: Date())
-                }
+           let savedWakingTime = try? JSONDecoder().decode(Date.self, from: data) {
+            wakingTimes = savedWakingTime
+            // Only show results if there's valid waking time data
+            showResults = true
+        } else {
+            // Set default date value to 8 AM if no saved value and do not show results
+            let calendar = Calendar.current
+            wakingTimes = calendar.date(bySettingHour: 8, minute: 0, second: 0, of: Date())
+            showResults = false
+        }
+        
+        // Initialize currentIndex
+        currentIndex = showResults ? 1 : 0
         
         if UserDefaults.standard.object(forKey: "sleepGoal") != nil {
                     sleepGoal = UserDefaults.standard.double(forKey: "sleepGoal")

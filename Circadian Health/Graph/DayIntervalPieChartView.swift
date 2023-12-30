@@ -57,6 +57,14 @@ struct DayIntervalPieChartView: View {
         ]
     }
     
+    // Dummy data for the inner chart
+    private var innerDayIntervals: [InnerDayInterval] {
+        return [
+            InnerDayInterval(color: .yellow, value: 50), // 50% for the yellow segment
+            InnerDayInterval(color: .indigo, value: 50)    // 50% for the dark blue segment
+        ]
+    }
+    
     private func startAngle(of index: Int) -> Angle {
             var cumulativePercentage = 0.0
             for i in 0..<index {
@@ -82,6 +90,21 @@ struct DayIntervalPieChartView: View {
             // Use GeometryReader to adapt to various screen sizes
             GeometryReader { geometry in
                 ZStack {
+                    
+                    ZStack {
+                        Chart(innerDayIntervals, id: \.id) { interval in
+                            SectorMark(
+                                angle: .value("Value", interval.value),
+                                innerRadius: .ratio(0.58),
+                                outerRadius: .ratio(0.8)
+                            )
+                            .foregroundStyle(interval.color)
+                            .cornerRadius(5.0)
+                        }
+                        .aspectRatio(1, contentMode: .fit)
+                    }
+                    .frame(width: geometry.size.width * 0.62, height: geometry.size.height * 0.62)
+                    
                     // ZStack for the pie chart and tick marks
                     ZStack {
                         Chart(dayIntervals, id: \.name) { interval in
@@ -189,4 +212,10 @@ struct TimeLabel: View {
                 .foregroundColor(.white)
         }
     }
+}
+
+struct InnerDayInterval: Identifiable {
+    let id = UUID()
+    var color: Color
+    var value: Double
 }

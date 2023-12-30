@@ -67,7 +67,7 @@ struct ResultsView: View {
             
             Text("Follow these intervals daily for optimal circadian health")
                 .font(.subheadline)
-                .foregroundColor(.gray)
+                .foregroundColor(.blue)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
