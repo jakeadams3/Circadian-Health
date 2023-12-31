@@ -44,6 +44,7 @@ struct MainInterfaceView: View {
             }
             .sheet(isPresented: $viewModel.isFirstTime) {
                 WelcomeView(isFirstTime: $viewModel.isFirstTime)
+                    .interactiveDismissDisabled()
             }
         }
         .environment(\.colorScheme, .light)

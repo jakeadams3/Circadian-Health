@@ -22,6 +22,7 @@ struct DayIntervalPieChartView: View {
     var avoidLightEnd: Date
     
     @ObservedObject var viewModel: MainInterfaceViewModel
+    @ObservedObject var locationViewModel = LocationViewModel.shared
 
     // Calculate percentage of the day, considering intervals that cross midnight
     private func percentageOfTheDay(start: Date, end: Date) -> Double {
@@ -57,13 +58,30 @@ struct DayIntervalPieChartView: View {
         ]
     }
     
-    // Dummy data for the inner chart
-    private var innerDayIntervals: [InnerDayInterval] {
-        return [
-            InnerDayInterval(color: .yellow, value: 50), // 50% for the yellow segment
-            InnerDayInterval(color: .indigo, value: 50)    // 50% for the dark blue segment
-        ]
-    }
+    private func calculateDayNightPercentages() -> (day: Double, night: Double) {
+            let sunrise = locationViewModel.sunriseTime
+            let sunset = locationViewModel.sunsetTime
+            let dayDuration = Calendar.current.dateComponents([.second], from: sunrise, to: sunset).second ?? 0
+            let nightDuration = 86400 - dayDuration // Total seconds in a day minus day duration
+            
+            print("Day duration: \(dayDuration) seconds, Night duration: \(nightDuration) seconds")
+
+            let dayPercentage = Double(dayDuration) / 86400.0 * 100
+            let nightPercentage = Double(nightDuration) / 86400.0 * 100
+
+            print("Day percentage: \(dayPercentage)%, Night percentage: \(nightPercentage)%")
+            
+            return (day: dayPercentage, night: nightPercentage)
+        }
+
+        // Update innerDayIntervals to use calculated percentages
+        private var innerDayIntervals: [InnerDayInterval] {
+            let percentages = calculateDayNightPercentages()
+            return [
+                InnerDayInterval(color: .yellow, value: percentages.day),
+                InnerDayInterval(color: .indigo, value: percentages.night)
+            ]
+        }
     
     private func startAngle(of index: Int) -> Angle {
             var cumulativePercentage = 0.0
@@ -84,6 +102,27 @@ struct DayIntervalPieChartView: View {
         let roundedCumulativeSeconds = round(cumulativeSeconds)
         return Calendar.current.date(byAdding: .second, value: Int(roundedCumulativeSeconds), to: getLightStart) ?? getLightStart
     }
+    
+    private func rotationAngleForGetLightStart() -> Double {
+        let totalSecondsInDay = 86400.0
+
+        // Calculate the time interval between getLightStart and sunriseTime
+        let secondsInterval: Int
+        if getLightStart > locationViewModel.sunriseTime {
+            // getLightStart is after sunrise
+            secondsInterval = Calendar.current.dateComponents([.second], from: getLightStart, to: locationViewModel.sunriseTime).second ?? 0
+        } else {
+            // getLightStart is before sunrise, calculate the time remaining in the day after sunrise plus the time from midnight to getLightStart
+            let secondsAfterSunriseToEndOfDay = Calendar.current.dateComponents([.second], from: Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: 1, to: getLightStart)!), to: locationViewModel.sunriseTime).second ?? 0
+            let secondsFromMidnightToGetLightStart = Calendar.current.dateComponents([.second], from: getLightStart, to: Calendar.current.startOfDay(for: getLightStart)).second ?? 0
+            secondsInterval = secondsAfterSunriseToEndOfDay + secondsFromMidnightToGetLightStart
+        }
+
+        let percentageOfDay = Double(secondsInterval) / totalSecondsInDay
+        print("\(percentageOfDay)")
+        let rotationAngle = percentageOfDay * 360.0
+        return rotationAngle
+    }
 
     var body: some View {
         VStack {
@@ -102,6 +141,7 @@ struct DayIntervalPieChartView: View {
                             .cornerRadius(5.0)
                         }
                         .aspectRatio(1, contentMode: .fit)
+                        .rotationEffect(Angle(degrees: self.rotationAngleForGetLightStart()))
                     }
                     .frame(width: geometry.size.width * 0.62, height: geometry.size.height * 0.62)
                     
@@ -150,6 +190,10 @@ struct DayIntervalPieChartView: View {
                 }
             }
             Spacer(minLength: 30)
+        }
+        .onAppear {
+            // Fetch current location when the view appears
+            locationViewModel.fetchCurrentLocation()
         }
     }
 }

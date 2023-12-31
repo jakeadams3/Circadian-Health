@@ -51,6 +51,8 @@ class MainInterfaceViewModel: ObservableObject {
     }
     @Published var isFirstTime: Bool = UserDefaults.standard.object(forKey: "isFirstTime") as? Bool ?? true
     @Published  var showingAlert = false
+    
+    var locationViewModel = LocationViewModel.shared
 
     init() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in

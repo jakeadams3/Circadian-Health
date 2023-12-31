@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		57078B522B3E48A300D9F011 /* ProgressRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57078B512B3E48A300D9F011 /* ProgressRingView.swift */; };
+		57078B582B3FE0E500D9F011 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57078B572B3FE0E500D9F011 /* LocationViewModel.swift */; };
 		5757C8CF2B325FD500D6C4FB /* DayIntervalPieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5757C8CE2B325FD500D6C4FB /* DayIntervalPieChartView.swift */; };
 		57A992552A0C7F1E009A5546 /* Circadian_HealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A992542A0C7F1E009A5546 /* Circadian_HealthApp.swift */; };
 		57A992572A0C7F1E009A5546 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A992562A0C7F1E009A5546 /* ContentView.swift */; };
@@ -30,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		57078B512B3E48A300D9F011 /* ProgressRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRingView.swift; sourceTree = "<group>"; };
+		57078B562B3FE07D00D9F011 /* Circadian-Health-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Circadian-Health-Info.plist"; sourceTree = SOURCE_ROOT; };
+		57078B572B3FE0E500D9F011 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		5757C8CE2B325FD500D6C4FB /* DayIntervalPieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayIntervalPieChartView.swift; sourceTree = "<group>"; };
 		57A992512A0C7F1E009A5546 /* Circadian Health.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Circadian Health.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A992542A0C7F1E009A5546 /* Circadian_HealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circadian_HealthApp.swift; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 		57A992532A0C7F1E009A5546 /* Circadian Health */ = {
 			isa = PBXGroup;
 			children = (
+				57078B562B3FE07D00D9F011 /* Circadian-Health-Info.plist */,
 				57CA2DC42B27D65B0087CFBC /* Root */,
 				57E4CB402B37E4D1000BB70C /* MainTabView */,
 				57CA2DC32B27D6390087CFBC /* Utils */,
@@ -119,6 +123,7 @@
 				57CA2DBD2B27D4170087CFBC /* TimePeriodArcView.swift */,
 				5757C8CE2B325FD500D6C4FB /* DayIntervalPieChartView.swift */,
 				57078B512B3E48A300D9F011 /* ProgressRingView.swift */,
+				57078B572B3FE0E500D9F011 /* LocationViewModel.swift */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				57CA2DB22B2563D70087CFBC /* MainInterfaceView.swift in Sources */,
 				57CA2DAE2B255EB70087CFBC /* DateUtils.swift in Sources */,
 				57A992552A0C7F1E009A5546 /* Circadian_HealthApp.swift in Sources */,
+				57078B582B3FE0E500D9F011 /* LocationViewModel.swift in Sources */,
 				57CA2DC62B27DAB10087CFBC /* WakeupTimeView.swift in Sources */,
 				57078B522B3E48A300D9F011 /* ProgressRingView.swift in Sources */,
 				57CA2DB82B25773D0087CFBC /* ShiftCircadianRhythmView.swift in Sources */,
@@ -389,8 +395,10 @@
 				DEVELOPMENT_TEAM = 777D6AV5JC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Circadian-Health-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Circadian;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need location access for sunrise and sunset times.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -432,8 +440,10 @@
 				DEVELOPMENT_TEAM = 777D6AV5JC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Circadian-Health-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Circadian;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need location access for sunrise and sunset times.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
