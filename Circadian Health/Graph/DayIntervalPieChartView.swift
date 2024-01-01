@@ -138,7 +138,6 @@ struct DayIntervalPieChartView: View {
                                 outerRadius: .ratio(0.8)
                             )
                             .foregroundStyle(interval.color)
-                            .cornerRadius(5.0)
                         }
                         .aspectRatio(1, contentMode: .fit)
                         .rotationEffect(Angle(degrees: self.rotationAngleForGetLightStart()))
@@ -152,7 +151,6 @@ struct DayIntervalPieChartView: View {
                                 angle: .value("Value", interval.value),
                                 innerRadius: .ratio(0.618)
                             )
-                            .cornerRadius(5.0)
                             .foregroundStyle(colorForInterval(interval.name))
                         }
                         .aspectRatio(1, contentMode: .fit)
@@ -171,7 +169,20 @@ struct DayIntervalPieChartView: View {
                             TimeLabel(angle: self.startAngle(of: index), time: self.timeForTickMark(at: index), viewModel: viewModel)
                         }
                     }
-                    .frame(width: geometry.size.width * 0.75, height: geometry.size.height * 0.75) // Scale down time labels by 0.9
+                    .frame(width: geometry.size.width * 0.75, height: geometry.size.height * 0.75)
+                    
+                    VStack {
+                        Text("You").bold()
+                        Text("Are").bold()
+                        Text("Here").bold()
+                    }
+                    .foregroundColor(.white)
+                    .font(.subheadline)
+                    .frame(width: 70, height: 70)
+                    .background(Color.black)
+                    .clipShape(Circle()) // Clip the frame into a circle
+                    .padding(2)
+                    .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                 }
                 .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
             }
@@ -234,7 +245,7 @@ struct TickMark: View {
                 path.move(to: tickStart)
                 path.addLine(to: tickEnd)
             }
-            .stroke(Color.white, lineWidth: 2)
+            .stroke(Color.white, lineWidth: 1)
         }
     }
 }
