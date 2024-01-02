@@ -55,8 +55,46 @@ struct MainInterfaceView: View {
 @available(iOS 17.0, *)
 struct ResultsView: View {
     @ObservedObject var viewModel: MainInterfaceViewModel
+    @ObservedObject var locationViewModel = LocationViewModel.shared
     @Binding var showResults: Bool
     @Binding var currentIndex: Int
+    
+    private func isCurrentTimeWithin(intervalStart: Date, intervalEnd: Date) -> Bool {
+            let calendar = Calendar.current
+            let now = Date()
+            
+            // Extract only the hour and minute components
+            let nowComponents = calendar.dateComponents([.hour, .minute], from: now)
+            let startComponents = calendar.dateComponents([.hour, .minute], from: intervalStart)
+            let endComponents = calendar.dateComponents([.hour, .minute], from: intervalEnd)
+
+            // Reconstruct the dates with only hour and minute for accurate comparison
+            let nowTime = calendar.date(from: nowComponents)!
+            let startTime = calendar.date(from: startComponents)!
+            let endTime = calendar.date(from: endComponents)!
+            
+            if startTime <= endTime {
+                // Normal interval (does not cross midnight)
+                return nowTime >= startTime && nowTime <= endTime
+            } else {
+                // Interval crosses midnight
+                return nowTime >= startTime || nowTime <= endTime
+            }
+        }
+
+    private func getCurrentIntervalContent() -> (emoji: String, title: Text) {
+        if isCurrentTimeWithin(intervalStart: viewModel.getLightStart, intervalEnd: viewModel.getLightEnd) {
+            return ("☀️", Text("Time to get light!").foregroundColor(.green))
+        } else if isCurrentTimeWithin(intervalStart: viewModel.deadzoneStart, intervalEnd: viewModel.avoidLightStart) {
+            return ("☀️", Text("Deadzone: Viewing light has no effect on circadian rhythm").foregroundColor(.orange))
+        } else if isCurrentTimeWithin(intervalStart: viewModel.avoidLightStart, intervalEnd: viewModel.avoidLightEnd) {
+            return ("🌒", Text("Time to start avoiding light!").foregroundColor(.red))
+        } else if isCurrentTimeWithin(intervalStart: viewModel.sleepStart, intervalEnd: viewModel.sleepEnd) {
+            return ("🛏", Text("Time to get some sleep!").foregroundColor(.blue))
+        } else {
+            return ("❓", Text("Check your schedule").foregroundColor(.gray))
+        }
+    }
     
     var body: some View {
         VStack {
@@ -68,13 +106,41 @@ struct ResultsView: View {
             
             Text("Follow these intervals daily for optimal circadian health")
                 .font(.subheadline)
-                .foregroundColor(.blue)
+                .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
             Spacer().frame(height: 20) // ok last update for now
             
-            DayIntervalPieChartView(sleepStart: viewModel.sleepStart, sleepEnd: viewModel.sleepEnd, temperatureMinimum: viewModel.temperatureMinimum, temperatureMaximum: viewModel.temperatureMaximum, getLightStart: viewModel.getLightStart, getLightEnd: viewModel.getLightEnd, deadzoneStart: viewModel.deadzoneStart, avoidLightStart: viewModel.avoidLightStart, avoidLightEnd: viewModel.avoidLightEnd, viewModel: viewModel)
+            TabView {
+                // First page: DayIntervalPieChartView
+                DayIntervalPieChartView(sleepStart: viewModel.sleepStart, sleepEnd: viewModel.sleepEnd, temperatureMinimum: viewModel.temperatureMinimum, temperatureMaximum: viewModel.temperatureMaximum, getLightStart: viewModel.getLightStart, getLightEnd: viewModel.getLightEnd, deadzoneStart: viewModel.deadzoneStart, avoidLightStart: viewModel.avoidLightStart, avoidLightEnd: viewModel.avoidLightEnd, viewModel: viewModel)
+                    .frame(width: UIScreen.main.bounds.width)
+                
+                // Second page: Additional Legends
+                VStack(alignment: .center) {
+                    let intervalContent = getCurrentIntervalContent()
+                    intervalContent.title
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    
+                    Text(intervalContent.emoji)
+                        .font(.system(size: 100))
+                        .padding()
+
+                    Legend(color: .yellow, text: "Daytime today begins at \(viewModel.formatTime(locationViewModel.sunriseTime))")
+                    Legend(color: .indigo, text: "Nighttime today begins at \(viewModel.formatTime(locationViewModel.sunsetTime))")
+                    Text("Your temperature minimum occurs at \(viewModel.formatTime(viewModel.temperatureMinimum))")
+                        .foregroundColor(.white)
+                        .padding(.top, 2)
+                    Text("Your temperature maximum occurs at \(viewModel.formatTime(viewModel.temperatureMaximum))")
+                        .foregroundColor(.white)
+                        .padding(.top, 2)
+                }
+                .frame(width: UIScreen.main.bounds.width)
+                .background(Color.black)
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
             
             UpdateDataButton(viewModel: viewModel, currentIndex: $currentIndex, showResults: $showResults)
                 .padding(.bottom)
@@ -134,6 +200,32 @@ struct NavigationBarModifier: ViewModifier {
                 UINavigationBar.appearance().scrollEdgeAppearance = appearance
                 UINavigationBar.appearance().tintColor = titleColor
             }
+    }
+}
+
+struct Legend: View {
+    var color: Color?
+    var text: String
+
+    var body: some View {
+        HStack {
+            if let color = color {
+                ColorSwatch(color: color)
+            }
+
+            // Combine the label parts into one Text view for proper wrapping
+            let textParts = text.components(separatedBy: "at ")
+            if textParts.count == 2 {
+                Text(textParts[0] + "at ")
+                    .foregroundColor(color) +
+                Text(textParts[1])
+                    .foregroundColor(.white)
+            } else {
+                Text(text)
+                    .foregroundColor(.white)
+            }
+        }
+        .padding(.horizontal)
     }
 }
 

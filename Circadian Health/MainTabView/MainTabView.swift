@@ -48,18 +48,12 @@ struct MainTabView: View {
                     Label("Circadian Schedule", systemImage: "sun.max")
                 }
                 .tag(0)
-
-            TemperatureView()
-                .tabItem {
-                    Label("Body Temperature", systemImage: "thermometer.sun")
-                }
-                .tag(1)
             
             CircadianInfoView() // Replace with your actual CircadianInfoView and its required parameters
                 .tabItem {
                     Label("Info", systemImage: "info.circle")
                 }
-                .tag(2)
+                .tag(1)
             
         }
         .accentColor(.blue)

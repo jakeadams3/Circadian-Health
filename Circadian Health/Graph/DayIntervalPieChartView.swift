@@ -155,9 +155,9 @@ struct DayIntervalPieChartView: View {
                         }
                         .aspectRatio(1, contentMode: .fit)
 
-                        ForEach(0..<dayIntervals.count, id: \.self) { index in
-                            TickMark(angle: self.startAngle(of: index))
-                        }
+//                        ForEach(0..<dayIntervals.count, id: \.self) { index in
+//                            TickMark(angle: self.startAngle(of: index))
+//                        }
                         
                         ProgressRingView(getLightStart: getLightStart)
                     }
@@ -195,12 +195,23 @@ struct DayIntervalPieChartView: View {
                 ForEach(dayIntervals, id: \.name) { interval in
                     HStack {
                         ColorSwatch(color: colorForInterval(interval.name))
-                        Text(interval.name)
-                            .foregroundColor(.white) // Set the text color to white
+
+                        // Separate the label into two parts: the colored part and the white part.
+                        let intervalParts = interval.name.components(separatedBy: ": ")
+                        if intervalParts.count == 2 {
+                            Text(intervalParts[0] + ":")
+                                .foregroundColor(colorForInterval(interval.name)) // Colored part
+
+                            Text(" " + intervalParts[1])
+                                .foregroundColor(.white) // Remaining part stays white
+                        } else {
+                            Text(interval.name)
+                                .foregroundColor(.white) // Fallback in case of unexpected format
+                        }
                     }
                 }
             }
-            Spacer(minLength: 30)
+            Spacer(minLength: 50)
         }
         .onAppear {
             // Fetch current location when the view appears
