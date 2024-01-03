@@ -24,19 +24,21 @@ struct SleepGoalView: View {
     }
 
     var body: some View {
-        VStack {
+        VStack(spacing: 30) {
             Text("What is your target sleep goal per night?")
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
-                .padding()
+                .padding(.horizontal)
+                .frame(maxWidth: .infinity, alignment: .center)
 
             viewModel.durationPicker(selection: Binding<TimeInterval>(
                         get: { viewModel.sleepGoal },
                         set: { viewModel.sleepGoal = $0 }
                     ))
                     .frame(maxWidth: .infinity)
+                    .labelsHidden()
 
             Button(action: {
                 withAnimation {
@@ -46,12 +48,15 @@ struct SleepGoalView: View {
                 }
             }) {
                 Text("Calculate")
-                    .font(.title2)
+                    .fontWeight(.bold)
                     .foregroundColor(.white)
                     .padding()
-                    .background(Color.blue)
+                    .frame(maxWidth: .infinity)
+                    .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.yellow]), startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(10)
+                    .shadow(radius: 5)
             }
         }
+        .padding()
     }
 }

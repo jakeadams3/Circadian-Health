@@ -12,6 +12,7 @@ import WeatherKit
 class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var sunriseTime: Date = Date()
     @Published var sunsetTime: Date = Date()
+    @Published var hasFetchedTimes: Bool = false
     private let locationManager = CLLocationManager()
     private let weatherService = WeatherService.shared
 
@@ -44,8 +45,10 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                     DispatchQueue.main.async {
                         self.sunriseTime = sunrise!
                         self.sunsetTime = sunset!
+                        self.hasFetchedTimes = true
                     }
                 } catch {
+                    self.hasFetchedTimes = false
                     print("Error fetching weather data: \(error)")
                 }
             }

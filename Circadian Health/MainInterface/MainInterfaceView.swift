@@ -18,7 +18,8 @@ struct MainInterfaceView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.black.edgesIgnoringSafeArea(.all)
+                LinearGradient(gradient: Gradient(colors: [Color.yellow.opacity(1.0), Color.black.opacity(1.0), Color.blue.opacity(1.0)]), startPoint: .top, endPoint: .bottom)
+                    .edgesIgnoringSafeArea(.all)
 
                 VStack(spacing: 20) { // Consistent spacing for a cleaner look
                     if !showResults {
@@ -86,7 +87,7 @@ struct ResultsView: View {
         if isCurrentTimeWithin(intervalStart: viewModel.getLightStart, intervalEnd: viewModel.getLightEnd) {
             return ("☀️", Text("Time to get light!").foregroundColor(.green))
         } else if isCurrentTimeWithin(intervalStart: viewModel.deadzoneStart, intervalEnd: viewModel.avoidLightStart) {
-            return ("☀️", Text("Deadzone: Viewing light has no effect on circadian rhythm").foregroundColor(.orange))
+            return ("☀️", Text("Deadzone: Viewing light currently has no effect on circadian rhythm").foregroundColor(.orange))
         } else if isCurrentTimeWithin(intervalStart: viewModel.avoidLightStart, intervalEnd: viewModel.avoidLightEnd) {
             return ("🌒", Text("Time to start avoiding light!").foregroundColor(.red))
         } else if isCurrentTimeWithin(intervalStart: viewModel.sleepStart, intervalEnd: viewModel.sleepEnd) {
@@ -106,7 +107,7 @@ struct ResultsView: View {
             
             Text("Follow these intervals daily for optimal circadian health")
                 .font(.subheadline)
-                .foregroundColor(.gray)
+                .foregroundColor(.black)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
@@ -123,27 +124,33 @@ struct ResultsView: View {
                     intervalContent.title
                         .font(.title2)
                         .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
                     
                     Text(intervalContent.emoji)
                         .font(.system(size: 100))
                         .padding()
-
-                    Legend(color: .yellow, text: "Daytime today begins at \(viewModel.formatTime(locationViewModel.sunriseTime))")
-                    Legend(color: .indigo, text: "Nighttime today begins at \(viewModel.formatTime(locationViewModel.sunsetTime))")
+                    
+                    let sunriseTimeText = locationViewModel.hasFetchedTimes ? viewModel.formatTime(locationViewModel.sunriseTime) : "N/A"
+                    let sunsetTimeText = locationViewModel.hasFetchedTimes ? viewModel.formatTime(locationViewModel.sunsetTime) : "N/A"
+                    
+                    Legend(color: .yellow, text: "Daytime today begins at \(sunriseTimeText)")
+                    Legend(color: .indigo, text: "Nighttime today begins at \(sunsetTimeText)")
                     Text("Your temperature minimum occurs at \(viewModel.formatTime(viewModel.temperatureMinimum))")
                         .foregroundColor(.white)
                         .padding(.top, 2)
+                        .frame(maxWidth: .infinity)
                     Text("Your temperature maximum occurs at \(viewModel.formatTime(viewModel.temperatureMaximum))")
                         .foregroundColor(.white)
                         .padding(.top, 2)
+                        .frame(maxWidth: .infinity)
                 }
                 .frame(width: UIScreen.main.bounds.width)
-                .background(Color.black)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
             
             UpdateDataButton(viewModel: viewModel, currentIndex: $currentIndex, showResults: $showResults)
                 .padding(.bottom)
+                .padding(.horizontal)
         }
     }
 }
@@ -163,7 +170,7 @@ struct UpdateDataButton: View {
                 .foregroundColor(.white)
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Color.blue)
+                .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.yellow]), startPoint: .leading, endPoint: .trailing))
                 .cornerRadius(8)
         }
         .alert(isPresented: $viewModel.showingAlert) {
@@ -223,8 +230,10 @@ struct Legend: View {
             } else {
                 Text(text)
                     .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
             }
         }
+        .frame(maxWidth: .infinity)
         .padding(.horizontal)
     }
 }

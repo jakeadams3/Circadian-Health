@@ -12,49 +12,63 @@ struct WakeupTimeView: View {
     @Binding var currentIndex: Int
     @Binding var wakingTimes: [Date]
 
+    @ObservedObject var locationViewModel = LocationViewModel.shared
     var viewModel: MainInterfaceViewModel
 
     private var titleText: String {
         switch currentIndex {
-        case 0:
-            return "What is your target wakeup time? (This should ideally be within a few hours of sunrise)"
         case 1:
-            return "What was your wakeup time yesterday?"
+            return "Yesterday's Wakeup Time"
         case 2:
-            return "What was your wakeup time today?"
+            return "Today's Wakeup Time"
         default:
             return ""
         }
     }
 
     var body: some View {
-        VStack {
-            Text(titleText)
-                .font(.title2)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .multilineTextAlignment(.center)
-                .padding()
+        VStack(spacing: 30) {
+            if currentIndex == 0 {
+                Text("Enter your typical or target wakeup time:")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                
+                Text("The closer to sunrise (\(viewModel.formatTime(locationViewModel.sunriseTime))), the better.")
+                    .font(.subheadline)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+            } else {
+                Text(titleText)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .padding()
+            }
 
             viewModel.datePicker(selection: $wakingTimes[currentIndex])
                 .frame(maxWidth: .infinity)
+                .labelsHidden() // Hide the default labels for a cleaner look
 
             Button(action: {
                 withAnimation {
                     viewModel.saveData()
-                    // Debugging print statement
-                    print("Selected wakeup time for index \(currentIndex): \(wakingTimes[currentIndex])")
                     currentIndex += 1
                 }
             }) {
                 Text("Next")
-                    .font(.title2)
+                    .fontWeight(.bold)
                     .foregroundColor(.white)
                     .padding()
-                    .background(Color.blue)
+                    .frame(maxWidth: .infinity)
+                    .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.yellow]), startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(10)
+                    .shadow(radius: 5)
             }
         }
+        .padding()
         .onAppear {
             var calendar = Calendar.current
             calendar.timeZone = TimeZone.current
@@ -62,9 +76,9 @@ struct WakeupTimeView: View {
             components.hour = 8
             components.minute = 0
             components.second = 0
-
+            
             let defaultTime = calendar.date(from: components) ?? Date()
-
+            
             if wakingTimes.count > currentIndex {
                 wakingTimes[currentIndex] = defaultTime
             }

@@ -179,7 +179,7 @@ struct DayIntervalPieChartView: View {
                     .foregroundColor(.white)
                     .font(.subheadline)
                     .frame(width: 70, height: 70)
-                    .background(Color.black)
+                    .background(Color.clear)
                     .clipShape(Circle()) // Clip the frame into a circle
                     .padding(2)
                     .position(x: geometry.size.width / 2, y: geometry.size.height / 2)

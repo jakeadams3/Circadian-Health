@@ -29,11 +29,15 @@ struct ProgressRingView: View {
             // Calculate the end point of the perpendicular line on the outer circumference of the progress ring
             let lineOuterEndPoint = CGPoint(x: center.x + cos((-90 + progressAngle).degreesToRadians) * outerRadius,
                                             y: center.y + sin((-90 + progressAngle).degreesToRadians) * outerRadius)
-
+            
+            // Calculate the intermediate point (two-thirds towards the center)
+            let twoThirdsPoint = CGPoint(x: center.x + (lineOuterEndPoint.x - center.x) * 1 / 3,
+                                         y: center.y + (lineOuterEndPoint.y - center.y) * 1 / 3)
+            
             // Draw the perpendicular line
             Path { path in
                 path.move(to: lineOuterEndPoint)
-                path.addLine(to: center)
+                path.addLine(to: twoThirdsPoint)
             }
             .stroke(Color.white, lineWidth: 2)
         }
