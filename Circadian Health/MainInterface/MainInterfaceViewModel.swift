@@ -191,12 +191,23 @@ class MainInterfaceViewModel: ObservableObject {
         sleepStart
     }
     
-     var sleepStart: Date {
+    var sleepStart: Date {
         if let sleepStartTime = UserDefaults.standard.object(forKey: "sleepStartTime") as? Date {
             return sleepStartTime
         } else {
-            return subtractHours(from: averageWakingTime ?? Date(), hours: Int(sleepGoal / 3600))
+            // Subtract both hours and minutes from the average waking time
+            let totalHours = Int(sleepGoal) / 3600
+            let totalMinutes = Int(sleepGoal) % 3600 / 60
+            return subtractTime(from: averageWakingTime ?? Date(), hours: totalHours, minutes: totalMinutes)
         }
+    }
+
+    // Helper function to subtract hours and minutes from a given date
+    func subtractTime(from date: Date, hours: Int, minutes: Int) -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.hour = -hours
+        dateComponents.minute = -minutes
+        return Calendar.current.date(byAdding: dateComponents, to: date) ?? date
     }
     
     var sleepEnd: Date {
@@ -284,38 +295,57 @@ class MainInterfaceViewModel: ObservableObject {
 
     @ViewBuilder
     func durationPicker(selection: Binding<TimeInterval>) -> some View {
+        let hoursOptions = Array(6..<11)
+        let minutesOptions = Array(stride(from: 0, to: 60, by: 5))
+        
+        // Create bindings for hours and minutes
+        let selectedHours = Binding<Int>(
+            get: { Int(selection.wrappedValue) / 3600 },
+            set: { selection.wrappedValue = TimeInterval($0 * 3600 + (Int(selection.wrappedValue) % 3600)) }
+        )
+        
+        let selectedMinutes = Binding<Int>(
+            get: { (Int(selection.wrappedValue) % 3600) / 60 },
+            set: { selection.wrappedValue = TimeInterval((Int(selection.wrappedValue) / 3600) * 3600 + $0 * 60) }
+        )
+
         #if os(iOS)
         HStack {
             Spacer()
-            Picker("", selection: selection) {
-                ForEach(6..<11) { hours in
-                    Text("\(hours) hours")
-                        .tag(TimeInterval(hours * 60 * 60))
+            Picker("Hours", selection: selectedHours) {
+                ForEach(hoursOptions, id: \.self) { hour in
+                    Text("\(hour) hours").tag(hour)
                 }
             }
             .labelsHidden()
             .pickerStyle(WheelPickerStyle())
-            .background(Color.white)
-            .accentColor(.white)
-            Spacer()
-        }
-        .frame(maxWidth: .infinity)
-        #else
-        HStack {
-            Spacer()
-            Picker("", selection: selection) {
-                ForEach(6..<11) { hours in
-                    Text("\(hours) hours")
-                        .tag(TimeInterval(hours * 60 * 60))
+
+            Picker("Minutes", selection: selectedMinutes) {
+                ForEach(minutesOptions, id: \.self) { minute in
+                    Text("\(minute) minutes").tag(minute)
                 }
             }
             .labelsHidden()
-            .pickerStyle(MenuPickerStyle())
-            .background(Color.clear)
-            .accentColor(.white)
+            .pickerStyle(WheelPickerStyle())
+
             Spacer()
         }
         .frame(maxWidth: .infinity)
+        .background(Color.white)
+        .accentColor(.white)
+        #else
+        // Similar code for non-iOS platforms
         #endif
+    }
+}
+
+struct PickerOption: Hashable {
+    var hours: Int
+    var minutes: Int
+    var label: String {
+        "\(hours) hours \(minutes) minutes"
+    }
+    var value: TimeInterval {
+        TimeInterval(hours * 60 * 60 + minutes * 60)
     }
 }

@@ -10,40 +10,47 @@ import SwiftUI
 struct CircadianInfoView: View {
     var body: some View {
         ZStack {
-            Color(.black).edgesIgnoringSafeArea(.all)
+            LinearGradient(gradient: Gradient(colors: [Color.yellow.opacity(1.0), Color.black.opacity(1.0), Color.blue.opacity(1.0)]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
 
             ScrollView {
                 VStack {
-                    Text("What is the Circadian Rhythm?")
+                    Text("What is the circadian rhythm?")
                         .font(.title2)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.white)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                         .padding(.bottom, 30)
 
                     Group {
-                        Text("Circadian rhythms are physical, mental, and behavioral changes that follow a 24-hour cycle. These natural processes respond primarily to light and dark and affect most living things, including humans, animals, and microbes.")
+                        Text("Think of the circadian rhythm as your body's internal clock. It's like a daily schedule that tells your body when to feel sleepy or awake, hungry or full. This rhythm follows a 24-hour cycle and is mainly affected by light and darkness, something all living things, including people, animals, and even tiny microbes, react to.")
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 10)
 
-                        Text("According to the National Institute of General Medical Sciences (NIGMS), nearly every tissue and organ within the body contains their own biological clock.")
+                        Text("The National Institute of General Medical Sciences (NIGMS) tells us that almost every part of our body has its own mini-clock. But there's a main clock in our brain, called the Suprachiasmatic Nucleus (SCN), that keeps all these mini-clocks in check. It's made up of about 20,000 nerve cells and gets information directly from our eyes.")
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 10)
                     }
                     
                     Group {
-                        Text("All of these individual clocks are controlled by one single master clock in the brain called the Suprachiasmatic Nucleus (SCN), which contains around 20,000 nerve cells and receives input directly from the eyes.")
+                        Text("Every cell and organ in your body requires light information to function properly, but since your internal organs are shielded from direct sunlight by your skin and skeletal system, the only way to relay this vital information is through the eyes.")
                             .foregroundColor(Color.white)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 10)
-
-                        Text("As the eyes perceive the bright light of day or the darkness of night, the SCN picks up on this information, signaling nearly every cell within the body to act accordingly. Consistent light-viewing patterns, paired with exercise and consistent eating times, keep the Circadian Rhythm in sync with a 24-hour day.")
-                            .foregroundColor(.white)
+                        
+                        Text("By exposing your eyes to sunlight at specific times of the day, you effectively communicate this essential light information to the entirety of your body. This is the sole pathway for such crucial light exposure.")
+                            .foregroundColor(Color.white)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 10)
-                        Text("One vital feature of your body's Circadian Rhythm and 24-hour cycle is your temperature minimum and maximum, or in other words the time of day your body temperature is lowest and highest.")
+                        
+                        Text("When our eyes see daylight or darkness, the SCN gets the message and tells the rest of our body. If we keep a regular routine with light exposure, exercise, and meal times, our circadian rhythm stays balanced.")
+                            .foregroundColor(Color.white)
+                            .multilineTextAlignment(.center)
+                            .padding(.bottom, 10)
+                        
+                        Text("One vital feature of our body's circadian rhythm and 24-hour cycle is the temperature minimum and maximum, or in other words the time of day our body temperature is at its lowest and highest, respectively.")
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 10)
@@ -51,67 +58,59 @@ struct CircadianInfoView: View {
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 10)
-                        Text("The time window in which Circadian clocks are insensitive to light signals is referred to as the 'Circadian Deadzone'. During this period, light has no major effect on one's Circadian Rhythm.")
+                        Text("The time window in which Circadian clocks are insensitive to light signals is referred to as the 'Circadian Deadzone'. During this period, light has no major effect on one's circadian rhythm.")
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 30)
                     }
                         
-                    Text("Why is Circadian Health so important?")
+                    Text("Why is circadian health so important?")
                         .font(.title2)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.white)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                         .padding(.bottom, 30)
                         
                     Group {
-                        Text("The Circadian Rhythm plays a massive role in the functioning of many processes within the body such as the regulation of sleep, digestion and metabolism, mental health, and cellular repair.")
+                        Text("The circadian rhythm plays a massive role in the functioning of many processes within the body such as the regulation of sleep, digestion and metabolism, mental health, and cellular repair.")
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 10)
 
-                        Text("Poor Circadian health, which can be caused through unhealthy light viewing patterns, irregular sleep schedules, and lack of consistent dieting can be very detrimental and have many adverse effects on physical and mental well-being, as well as decreasing overall lifespan.")
+                        Text("Poor circadian health, which can be caused through unhealthy light viewing patterns, irregular sleep schedules, and lack of consistent dieting can be very detrimental and have many adverse effects on physical and mental well-being, as well as decreasing overall lifespan.")
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 10)
                     }
                     
                     Group {
-                        Text("Adverse effects of poor Circadian health include the potential for sleep disorders, metabolic issues, mental health problems, and chronic health conditions.")
+                        Text("Adverse effects of poor Circadian health include the potential for sleep disorders, metabolic issues, depression, and chronic health conditions.")
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 10)
                         
-                        Text("On the other hand, taking care of one's Circadian health can lead to increased energy levels, improved mental and physical well-being, enhanced cognition, stronger immune function, and an increased lifespan.")
+                        Text("On the other hand, taking care of one's circadian health can lead to increased energy levels, improved mental and physical well-being, enhanced cognition, stronger immune function, and an increased lifespan.")
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 30)
                     }
                     Group {
-                        Text("How can one maintain Circadian Health?")
+                        Text("How can one maintain circadian health?")
                             .font(.title2)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.white)
                             .fontWeight(.bold)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 30)
                         
-                        Text("Maintaining great Circadian health mainly involves keeping a regular sleep-wake cycle and managing your exposure to light.")
+                        Text("Maintaining great circadian health mainly involves keeping a regular sleep-wake cycle and managing your exposure to light.")
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 10)
-                        Text("Doing so can be a complicated and tedious process, so we made this tool to hopefully make maintaining great Circadian health a tad bit easier.")
+                        Text("Doing so can be a complicated and tedious process, so this tool was created in hopes to make maintaining great circadian health a tad bit easier.")
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 10)
-                        Text("Our app calculates and provides you with actionable intervals to follow to let you know when to view light, avoid light, and sleep according to your current Circadian Rhythm.")
-                            .foregroundColor(.white)
-                            .multilineTextAlignment(.center)
-                            .padding(.bottom, 10)
-                        Text("It is strongly recommended that your Circadian Rhythm and thus wakeup time align with sunrise, as sunrise provides the optimal hue for SCN activation.")
-                            .foregroundColor(.white)
-                            .multilineTextAlignment(.center)
-                            .padding(.bottom, 10)
-                        Text("By entering the sunrise time for your location into our Shift Your Circadian Rhythm page, we'll generate for you a custom wakeup and bedtime schedule to get your Circadian Rhythm aligned with sunrise in just 3 days.")
+                        Text("Our app calculates and provides you with actionable intervals to follow regularly to let you know when to view light, avoid light, and sleep in order to optimize and keep you in sync with your circadian rhythm.")
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 10)

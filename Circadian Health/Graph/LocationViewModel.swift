@@ -13,6 +13,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var sunriseTime: Date = Date()
     @Published var sunsetTime: Date = Date()
     @Published var hasFetchedTimes: Bool = false
+    @Published var hasLocationAccess: Bool = false
     private let locationManager = CLLocationManager()
     private let weatherService = WeatherService.shared
 
@@ -67,13 +68,16 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
-        case .notDetermined, .restricted, .denied:
-            print("Location access denied")
-        case .authorizedAlways, .authorizedWhenInUse:
-            print("Location access granted")
-        @unknown default:
-            fatalError()
+            switch manager.authorizationStatus {
+            case .notDetermined, .restricted, .denied:
+                print("Location access denied")
+                hasLocationAccess = false // Update access status
+            case .authorizedAlways, .authorizedWhenInUse:
+                print("Location access granted")
+                hasLocationAccess = true // Update access status
+                fetchCurrentLocation() // Fetch location when access is granted
+            @unknown default:
+                fatalError()
+            }
         }
-    }
 }

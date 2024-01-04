@@ -12,7 +12,7 @@ struct WelcomeView: View {
 
     var body: some View {
         ZStack {
-            Color(red: 15/255, green: 15/255, blue: 15/255).edgesIgnoringSafeArea(.all)
+            Color(.black).edgesIgnoringSafeArea(.all)
 
             VStack {
                 Image("sun logo") // The name of the image in your assets
@@ -27,7 +27,7 @@ struct WelcomeView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 20)
 
-                Text("Ready to discover your Circadian Rhythm and enhance the quality and longevity of your life? Hit continue to get started!")
+                Text("Ready to discover your Circadian Rhythm and enhance the quality and longevity of your life? Hit Continue to get started!")
                     .font(.title3)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
@@ -39,12 +39,13 @@ struct WelcomeView: View {
                     UserDefaults.standard.set(false, forKey: "isFirstTime")
                 }) {
                     Text("Continue")
-                        .font(.title2)
-                        .bold()
-                        .frame(width: 200, height: 50)
-                        .background(Color.blue)
+                        .fontWeight(.bold)
                         .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.yellow]), startPoint: .leading, endPoint: .trailing))
                         .cornerRadius(10)
+                        .shadow(radius: 5)
                 }
             }
         }

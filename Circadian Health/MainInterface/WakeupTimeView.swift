@@ -26,6 +26,11 @@ struct WakeupTimeView: View {
         }
     }
 
+    // Computed property for sunrise time text
+    private var sunriseTimeText: String {
+        locationViewModel.hasLocationAccess ? viewModel.formatTime(locationViewModel.sunriseTime) : "N/A"
+    }
+
     var body: some View {
         VStack(spacing: 30) {
             if currentIndex == 0 {
@@ -35,7 +40,8 @@ struct WakeupTimeView: View {
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 
-                Text("The closer to sunrise (\(viewModel.formatTime(locationViewModel.sunriseTime))), the better.")
+                // Updated to use sunriseTimeText
+                Text("The closer to sunrise (\(sunriseTimeText)), the better.")
                     .font(.subheadline)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
@@ -70,18 +76,30 @@ struct WakeupTimeView: View {
         }
         .padding()
         .onAppear {
-            var calendar = Calendar.current
-            calendar.timeZone = TimeZone.current
-            var components = calendar.dateComponents([.year, .month, .day], from: Date())
-            components.hour = 8
-            components.minute = 0
-            components.second = 0
-            
-            let defaultTime = calendar.date(from: components) ?? Date()
-            
-            if wakingTimes.count > currentIndex {
-                wakingTimes[currentIndex] = defaultTime
-            }
+            refreshWakeupView()
+        }
+        .onChange(of: locationViewModel.hasLocationAccess) { _ in
+            refreshWakeupView()
+        }
+    }
+
+    // Function to refresh the wakeup view
+    private func refreshWakeupView() {
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone.current
+        var components = calendar.dateComponents([.year, .month, .day], from: Date())
+        components.hour = 8
+        components.minute = 0
+        components.second = 0
+        
+        let defaultTime = calendar.date(from: components) ?? Date()
+        
+        if wakingTimes.count > currentIndex {
+            wakingTimes[currentIndex] = defaultTime
+        }
+
+        if locationViewModel.hasLocationAccess {
+            locationViewModel.fetchCurrentLocation()
         }
     }
 }
