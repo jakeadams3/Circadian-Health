@@ -20,14 +20,14 @@ struct WelcomeView: View {
                     .scaledToFit()
                     .frame(height: 200) // Adjust to desired size
 
-                Text("Welcome to Circadian Health!")
+                Text("Welcome to My Circadian!")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 20)
 
-                Text("Ready to discover your Circadian Rhythm and enhance the quality and longevity of your life? Hit Continue to get started!")
+                Text("Ready to discover your circadian rhythm and enhance the quality and longevity of your life? Hit Continue to get started!")
                     .font(.title3)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
