@@ -126,6 +126,11 @@ struct DayIntervalPieChartView: View {
 
     var body: some View {
         VStack {
+            
+            Text("Follow these intervals daily for optimal circadian health")
+                .font(.subheadline)
+                .foregroundColor(.black)
+                .multilineTextAlignment(.center)
             // Use GeometryReader to adapt to various screen sizes
             GeometryReader { geometry in
                 ZStack {

@@ -105,13 +105,7 @@ struct ResultsView: View {
                 .foregroundColor(.white)
                 .padding(.top)
             
-            Text("Follow these intervals daily for optimal circadian health")
-                .font(.subheadline)
-                .foregroundColor(.black)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-            
-            Spacer().frame(height: 20) // ok last update for now
+            Spacer().frame(height: 5) // ok last update for now
             
             TabView {
                 // First page: DayIntervalPieChartView
@@ -143,6 +137,11 @@ struct ResultsView: View {
                         .foregroundColor(.white)
                         .padding(.top, 2)
                         .frame(maxWidth: .infinity)
+                    
+                    Link(" Weather", destination: URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
+                        .padding(.top, 4)
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
                 }
                 .frame(width: UIScreen.main.bounds.width)
             }
